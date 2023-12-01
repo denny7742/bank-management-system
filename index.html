@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> BANK MANAGEMENT SYSTEM </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.js">
+</head>
+<body>
+    
+</body>
+<script>
+    function CreateBankAccount(accountNumber,name,type,balance){
+    this.accountNumber = accountNumber;
+    this.name = name;
+    this.type = type;
+    this.balance = balance;
+
+    // deposite function
+    this.deposite = function(amount){
+        this.balance += amount;
+        console.log("SUCCESSFULLY Deposited RS.", amount ,"To accountno.=",accountNumber)
+    }
+
+    // withdraw function
+    this.withdraw = function(amount){
+        if(amount <= this.balance){
+            this.balance -= amount;
+            console.log("SUCCESSFULLY WITHDRAWN RS.", amount ,"from accountno.=",accountNumber)
+        }
+        else{
+            console.log("YOU DONT HAVE SUFFICIENT BALANCE", this.balance)
+        }
+      }
+
+    //   TOTAL BALANCE 
+    this.getTotalBalance = function (){
+        console.log("YOUR BALANCE IS -", this.balance)
+    }
+
+};
+
+let ac1 = new CreateBankAccount(6001 , "Dinesh" , "saving" , 6000)
+let ac2 = new CreateBankAccount(6002 , "Daniel" , "saving" , 8000)
+let ac3 = new CreateBankAccount(6003 , "Denny" , "saving" , 9000)
+let ac4 = new CreateBankAccount(6004 , "Dinu" , "saving" , 7000)
+let ac5 = new CreateBankAccount(6005 , "DP" , "saving" , 4000)
+
+ac1.deposite(200)
+console.log(ac1)
+
+ac1.withdraw(6000)
+
+ac1.getTotalBalance()
+
+ac2.withdraw(5000)
+
+
+// total balance of all accounts 
+let accounts = [ac1,ac2,ac3,ac4,ac5]
+
+function getTotalBalances(accounts){
+    let total = 0
+    for(let k=0;k<accounts.length;k++){
+    total += accounts[k].balance
+}
+console.log("Total Accounts Balance is =" ,total)
+}
+
+getTotalBalances(accounts)
+
+
+</script>
+</html>
